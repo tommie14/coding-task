@@ -1,0 +1,13 @@
+<form [formGroup]="searchFormGroup" (submit)="searchGif()" class="search">
+  <mat-form-field class="search__input">
+    <input matInput placeholder="Search gifs" formControlName="search">
+    <mat-error *ngIf="this.searchFormGroup.controls.search.invalid">Value required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button [color]="'primary'" class="search__button">Search</button>
+</form>
+<app-gif-table
+  [gifData]="gifData"
+  [totalPageCount]="totalPageCount"
+  [searchInput]="searchInput"
+>
+</app-gif-table>

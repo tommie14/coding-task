@@ -1,0 +1,28 @@
+<ng-container *ngIf="gifData">
+  <h1 class="heading-one">Found gifs</h1>
+  <div class="gifs">
+    <div class="gif" *ngFor="let gif of gifData">
+      <img [src]="gif.images.fixed_height_small.url" class="gif__img">
+      <i class="material-icons gif__icon" (click)="addToLikedGifs(gif.images.fixed_height_small.url)">
+        favorite
+      </i>
+    </div>
+  </div>
+  <mat-paginator
+    [length]="totalPageCount"
+    [pageSize]="25"
+    (page)="pageClicked($event)"
+  >
+  </mat-paginator>
+</ng-container>
+<ng-container *ngIf="likedGifs.length > 0">
+  <h1 class="heading-one">Liked gifs</h1>
+  <div class="gifs">
+    <div class="gif" *ngFor="let gif of likedGifs; index as i">
+      <img [src]="gif" class="gif__img">
+      <i class="material-icons gif__icon" (click)="deleteFromLikedGifs(i)">
+        close
+      </i>
+    </div>
+  </div>
+</ng-container>
